@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Entites.Abstract
+namespace Entities.Entites.Shared
 {
     //Polymorphism için
     public abstract class EntityBase

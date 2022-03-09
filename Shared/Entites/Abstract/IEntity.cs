@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Entites.Abstract
+namespace Entities.Entites.Shared
 {
     //Repository Pattern için.
     public interface IEntity
     {
-        s
+        
     }
 }
