@@ -9,12 +9,12 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.Concrete
+namespace Data.Concrete.EntityFramework.Repositories
 {
-    public class ArticleRepository : EfEntityRepositoryBase<Article>, IArticleRepository
+    public class EfArticleRepository : EfEntityRepositoryBase<Article>, IArticleRepository
     {
         //Tek bir base sınıf ile hepsini eklemiş oluyoruz.Dependiec Inj yapma sebebim IArticleRepository arayüzünde özel olarak bir şey implemente ettiğimde buraya direk yansıtmak istemem.
-        public ArticleRepository(DbContext context) : base(context)
+        public EfArticleRepository(DbContext context) : base(context)
         {
 
         }
