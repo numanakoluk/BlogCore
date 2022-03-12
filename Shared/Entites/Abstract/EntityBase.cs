@@ -13,7 +13,7 @@ namespace Entities.Entites.Shared
         public virtual int Id { get; set; }
         public virtual DateTime CreatedDate { get; set; } = DateTime.Now;
 
-        public virtual DateTime ModifiedDateTime { get; set; } = DateTime.Now;
+        public virtual DateTime ModifiedDate { get; set; } = DateTime.Now;
 
         public virtual bool IsDeleted { get; set; } = false; //silindi mi
 

@@ -15,10 +15,10 @@ namespace Entities.Concrete
         public DateTime Date { get; set; }
         public int ViewsCount { get; set; }
         public int CommentCount { get; set; }
-        public string SeaAuthor { get; set; } //AramaMotoru için.MetaTag.Paylaşan.
+        public string SeoAuthor { get; set; } //AramaMotoru için.MetaTag.Paylaşan.
 
-        public string SeaDescription { get; set; }
-        public string SeaText { get; set; } //text header
+        public string SeoDescription { get; set; }
+        public string SeoTags { get; set; } //text header
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
