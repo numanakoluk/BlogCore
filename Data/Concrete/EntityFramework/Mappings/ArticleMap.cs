@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EntityFramework.Mappings
 {
-    class ArticleMap : IEntityTypeConfiguration<Article>
+    public class ArticleMap : IEntityTypeConfiguration<Article>
     {
         public void Configure(EntityTypeBuilder<Article> builder)
         {
@@ -41,7 +41,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(a => a.IsActive).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
             builder.Property(a => a.Note).HasMaxLength(500);
-            builder.HasOne<Category>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(a => a.CategoryId);
+            builder.HasOne<CategoryMap>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(a => a.CategoryId);
             builder.HasOne<User>(a => a.User).WithMany(u => u.Articles).HasForeignKey(a => a.UserId);
             builder.ToTable("Articles");
         }
