@@ -26,7 +26,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(a => a.SeoDescription).IsRequired();
             builder.Property(a => a.SeoTags).IsRequired();
             builder.Property(a => a.SeoTags).HasMaxLength(70);
-            builder.Property(a => a.ViewsCount).IsRequired();
+            builder.Property(a => a.ViewCount).IsRequired();
             builder.Property(a => a.CommentCount).IsRequired();
             builder.Property(a => a.Thumbnail).IsRequired();
             builder.Property(a => a.Thumbnail).HasMaxLength(250);
@@ -41,7 +41,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(a => a.IsActive).IsRequired();
             builder.Property(a => a.IsDeleted).IsRequired();
             builder.Property(a => a.Note).HasMaxLength(500);
-            builder.HasOne<CategoryMap>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(a => a.CategoryId);
+            builder.HasOne<Category>(a => a.Category).WithMany(c => c.Articles).HasForeignKey(a => a.CategoryId);
             builder.HasOne<User>(a => a.User).WithMany(u => u.Articles).HasForeignKey(a => a.UserId);
             builder.ToTable("Articles");
         }

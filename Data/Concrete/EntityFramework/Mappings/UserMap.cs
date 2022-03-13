@@ -40,6 +40,8 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(u => u.IsActive).IsRequired();
             builder.Property(u => u.IsDeleted).IsRequired();
             builder.Property(u => u.Note).HasMaxLength(500);
+            //Ortak Farklı Property.
+            builder.Property(u => u.Email).HasColumnName("USER_EMAIL");
             builder.ToTable("Users");
         }
     }
