@@ -47,7 +47,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             },
                new Comment
             {
-                Id=1,
+                Id=2,
                 ArticleId=2,
                 Text= "Yazılıma ilginiz varsa, yazılım alanında kendinizi geliştirmek istiyorsanız, ya da bir programlama dili öğreneceksiniz ama nerden başlayacağınızı bilmiyorsanız; Size yardımcı olmak için biz hep burdayız. Lifeacode olarak kendimizi sürekli geliştiriyoruz ve her geçen gün büyüyen bir yazılım eğitim platformuyuz. Güncel yazılım eğitimlerini ya da yazılım hakkında merak ettiklerinizi biz öğreniyoruz ve sizinle paylaştığımız için son derece mutluyuz.",
                 IsActive = true,
@@ -62,7 +62,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             },
               new Comment
             {
-                Id=1,
+                Id=3,
                 ArticleId=2,
                 Text= "Yazılıma ilginiz varsa, yazılım alanında kendinizi geliştirmek istiyorsanız, ya da bir programlama dili öğreneceksiniz ama nerden başlayacağınızı bilmiyorsanız; Size yardımcı olmak için biz hep burdayız. Lifeacode olarak kendimizi sürekli geliştiriyoruz ve her geçen gün büyüyen bir yazılım eğitim platformuyuz. Güncel yazılım eğitimlerini ya da yazılım hakkında merak ettiklerinizi biz öğreniyoruz ve sizinle paylaştığımız için son derece mutluyuz.",
                 IsActive = true,
