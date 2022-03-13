@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EntityFramework.Repositories
 {
-    class EfRoleRepository : EfEntityRepositoryBase<Role>, IRoleRepository
+    public class EfRoleRepository : EfEntityRepositoryBase<Role>, IRoleRepository
     {
         public EfRoleRepository(DbContext context) : base(context)
         {

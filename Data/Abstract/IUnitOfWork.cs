@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 namespace Data.Abstract
 {
     //Garbage Collector'e bırakmamak için IDisposable gereksiz veriyi yöneterek önbellekten siliyoruz.
-    public interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork: IAsyncDisposable  
     {
         IArticleRepository Articles { get; } // unitofwork.Articles
 
-        ICategoryRepository Categories { get; } 
+        ICategoryRepository Categories { get; }
+        ICommentRepository Comments { get; }
 
-        ICommentRepository Roles { get; }
+        IRoleRepository Roles { get; }
 
         IUserRepository Users { get; } //_unitOfWork.Categories.AddAsync();
 
