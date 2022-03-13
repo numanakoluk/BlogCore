@@ -43,6 +43,30 @@ namespace Data.Concrete.EntityFramework.Mappings
             //Ortak Farklı Property.
             builder.Property(u => u.Email).HasColumnName("USER_EMAIL");
             builder.ToTable("Users");
+
+
+            //Fluent
+            builder.HasData(new User
+            {
+                Id = 1,
+                RoleId=1,
+                FirstName="Numan",
+                LastName="Tunga",
+                Username="numanakoluk",
+                Email= "numanrail80@gmail.com",
+                
+               
+                Description = "İlk Admin Kullanıcı",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "Admin Kullanıcısı.",
+                //Md5 
+                PasswordHash= Encoding.ASCII.GetBytes("0192023a7bbd73250516f069df18b500")
+            });
         }
     }
 }

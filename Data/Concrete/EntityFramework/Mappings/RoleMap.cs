@@ -29,6 +29,23 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(r => r.IsDeleted).IsRequired();
             builder.Property(r => r.Note).HasMaxLength(500);
             builder.ToTable("Roles");
+
+
+            //FlutentApi ilk veri ekleme
+            //Veri var mı kontrolü
+            builder.HasData(new Role
+            {
+                Id = 1,
+                Name = "Admin",
+                Description = "Admin Tüm Haklara Sahip",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "Admin Rolüdür."
+            });
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Data.Concrete
 
 
 
-        public IArticleRepository Articles => _articleRepository ?? new EfArticleRepository(_context);
+        public IArticleRepository Articles => _articleRepository ?? new EfArticleRepository(_context); //nullsa newle
         public ICategoryRepository Categories => _categoryRepository ?? new EfCategoryRepository(_context);
         public ICommentRepository Comments => _commentRepository ?? new EfCommentRepository(_context);
         public IRoleRepository Roles => _roleRepository ?? new EfRoleRepository(_context);
@@ -37,6 +37,7 @@ namespace Data.Concrete
             return await _context.SaveChangesAsync();
         }
 
+        //Context dispose edilirken diğer işlemler beklemek zorunda kalmayacak.İşlemler hızlanacak.Gabage collector er ya da geç silecek.
         public async ValueTask DisposeAsync()
         {
             await _context.DisposeAsync();
