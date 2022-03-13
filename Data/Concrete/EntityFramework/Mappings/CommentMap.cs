@@ -28,6 +28,55 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.IsDeleted).IsRequired();
             builder.Property(c => c.Note).HasMaxLength(500);
             builder.ToTable("Comments");
+
+            builder.HasData(
+                new Comment
+            {
+                Id=1,
+                ArticleId=1,
+                Text= "Yazılıma ilginiz varsa, yazılım alanında kendinizi geliştirmek istiyorsanız, ya da bir programlama dili öğreneceksiniz ama nerden başlayacağınızı bilmiyorsanız; Size yardımcı olmak için biz hep burdayız. Lifeacode olarak kendimizi sürekli geliştiriyoruz ve her geçen gün büyüyen bir yazılım eğitim platformuyuz. Güncel yazılım eğitimlerini ya da yazılım hakkında merak ettiklerinizi biz öğreniyoruz ve sizinle paylaştığımız için son derece mutluyuz.",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "C # Makale yorumu",
+                
+
+            },
+               new Comment
+            {
+                Id=1,
+                ArticleId=2,
+                Text= "Yazılıma ilginiz varsa, yazılım alanında kendinizi geliştirmek istiyorsanız, ya da bir programlama dili öğreneceksiniz ama nerden başlayacağınızı bilmiyorsanız; Size yardımcı olmak için biz hep burdayız. Lifeacode olarak kendimizi sürekli geliştiriyoruz ve her geçen gün büyüyen bir yazılım eğitim platformuyuz. Güncel yazılım eğitimlerini ya da yazılım hakkında merak ettiklerinizi biz öğreniyoruz ve sizinle paylaştığımız için son derece mutluyuz.",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "C++ Makale yorumu",
+                
+
+            },
+              new Comment
+            {
+                Id=1,
+                ArticleId=2,
+                Text= "Yazılıma ilginiz varsa, yazılım alanında kendinizi geliştirmek istiyorsanız, ya da bir programlama dili öğreneceksiniz ama nerden başlayacağınızı bilmiyorsanız; Size yardımcı olmak için biz hep burdayız. Lifeacode olarak kendimizi sürekli geliştiriyoruz ve her geçen gün büyüyen bir yazılım eğitim platformuyuz. Güncel yazılım eğitimlerini ya da yazılım hakkında merak ettiklerinizi biz öğreniyoruz ve sizinle paylaştığımız için son derece mutluyuz.",
+                IsActive = true,
+                IsDeleted = false,
+                CreatedByName = "InitialCreate",
+                CreatedDate = DateTime.Now,
+                ModifiedByName = "InitialCreate",
+                ModifiedDate = DateTime.Now,
+                Note = "JavaScript Makale yorumu",
+                
+
+            }
+                
+                );
         }
     }
 }
