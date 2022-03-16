@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Utility.Results.Abstract
 {
-    interface IResult
+    public interface IResult
     {
         //Değiştirilebilir değil bu yüzden set yok.
         public ResultStatus ResultStatus { get; } //ResultStatus.Success//ResultStatus.Error
