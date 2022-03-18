@@ -13,6 +13,7 @@ namespace Services.Abstract
     {
         Task<IDataResult<Category>> Get(int categoryId);
         Task<IDataResult<IList<Category>>> GetAll();
+        Task<IDataResult<IList<Category>>> GetAllByNonDeleted();
 
         //ViewModel dto
         Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName);
