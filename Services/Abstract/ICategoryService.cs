@@ -11,9 +11,9 @@ namespace Services.Abstract
 {
     public interface ICategoryService
     {
-        Task<IDataResult<Category>> Get(int categoryId);
-        Task<IDataResult<IList<Category>>> GetAll();
-        Task<IDataResult<IList<Category>>> GetAllByNonDeleted();
+        Task<IDataResult<Article>> Get(int categoryId);
+        Task<IDataResult<IList<Article>>> GetAll();
+        Task<IDataResult<IList<Article>>> GetAllByNonDeleted();
 
         //ViewModel dto
         Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName);

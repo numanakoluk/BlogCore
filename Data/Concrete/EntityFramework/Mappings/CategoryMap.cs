@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EntityFramework.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Category>
+    public class CategoryMap : IEntityTypeConfiguration<Article>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Article> builder)
         {
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id).ValueGeneratedOnAdd();
@@ -30,7 +30,7 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.ToTable("Categories");
 
             builder.HasData
-                (new Category
+                (new Article
             {
                 Id=1,
                 Name="C#",
@@ -44,7 +44,7 @@ namespace Data.Concrete.EntityFramework.Mappings
                 Note = "C # Blog Kategorisi",
 
             },
-               new Category
+               new Article
                {
                    Id = 2,
                    Name = "C++",
@@ -58,7 +58,7 @@ namespace Data.Concrete.EntityFramework.Mappings
                    Note = "C ++ Blog Kategorisi",
 
                },
-               new Category
+               new Article
                {
                    Id = 3,
                    Name = "JavaScript",

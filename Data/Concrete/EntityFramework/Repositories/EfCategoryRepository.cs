@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EntityFramework.Repositories
 {
-    public class EfCategoryRepository : EfEntityRepositoryBase<Category>, ICategoryRepository
+    public class EfCategoryRepository : EfEntityRepositoryBase<Article>, ICategoryRepository
     {
         public EfCategoryRepository(DbContext context) : base(context)
         {

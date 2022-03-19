@@ -26,7 +26,7 @@ namespace Services.Concrete
         public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
             //İleride AutoMapper library ile.
-            await _unitOfWork.Categories.AddAsync(new Category
+            await _unitOfWork.Categories.AddAsync(new Article
             {
                 Name = categoryAddDto.Name,
                 Description = categoryAddDto.Description,
@@ -71,40 +71,40 @@ namespace Services.Concrete
         }
 
 
-        public async Task<IDataResult<Category>> Get(int categoryId)
+        public async Task<IDataResult<Article>> Get(int categoryId)
         {
             //ınclude articles
             var category= await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId,c=>c.Articles);
 
             if (category!=null)
             {
-                return  new  DataResult<Category>(ResultStatus.Success,category);
+                return  new  DataResult<Article>(ResultStatus.Success,category);
             }
-            return new DataResult<Category>(ResultStatus.Error,"Böyle Bir Kategori Bulunamadı.",null);
+            return new DataResult<Article>(ResultStatus.Error,"Böyle Bir Kategori Bulunamadı.",null);
         }
 
-        public async Task<IDataResult<IList<Category>>> GetAll()
+        public async Task<IDataResult<IList<Article>>> GetAll()
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Articles);
 
             //0 tane kategori de isteyebiliriz.
             if (categories.Count>-1)
             {
-                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
+                return new DataResult<IList<Article>>(ResultStatus.Success, categories);
             }
-            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.",null);
+            return new DataResult<IList<Article>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.",null);
         }
 
-        public async Task<IDataResult<IList<Category>>> GetAllByNonDeleted()
+        public async Task<IDataResult<IList<Article>>> GetAllByNonDeleted()
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => !c.IsDeleted, c => c.Articles);
 
             if (categories.Count>-1)
             {
-                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
+                return new DataResult<IList<Article>>(ResultStatus.Success, categories);
 
             }
-            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.", null);
+            return new DataResult<IList<Article>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.", null);
 
         }
 
