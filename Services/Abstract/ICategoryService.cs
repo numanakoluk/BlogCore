@@ -18,10 +18,10 @@ namespace Services.Abstract
         //ViewModel dto
         Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName);
 
-        Task<IResult> Update(CategoryUpdateDto categoryUpdateDto, string modifedByName);
+        Task<IResult> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName);
 
         //Active Passive
-        Task<IResult> Delete(int categoyId);
+        Task<IResult> Delete(int categoyId, string modifiedByName);
 
         //Veritabanı silme.
         Task<IResult> HardDelete(int categoryId);
