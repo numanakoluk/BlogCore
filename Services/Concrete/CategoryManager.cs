@@ -46,14 +46,29 @@ namespace Services.Concrete
             return new DataResult<Category>(ResultStatus.Error,"Böyle Bir Kategori Bulunamadı.",null);
         }
 
-        public Task<IDataResult<IList<Category>>> GetAll()
+        public async Task<IDataResult<IList<Category>>> GetAll()
         {
-            throw new NotImplementedException();
+            var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Articles);
+
+            //0 tane kategori de isteyebiliriz.
+            if (categories.Count>-1)
+            {
+                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
+            }
+            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.",null);
         }
 
-        public Task<IDataResult<IList<Category>>> GetAllByNonDeleted()
+        public async Task<IDataResult<IList<Category>>> GetAllByNonDeleted()
         {
-            throw new NotImplementedException();
+            var categories = await _unitOfWork.Categories.GetAllAsync(c => !c.IsDeleted, c => c.Articles);
+
+            if (categories.Count>-1)
+            {
+                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
+
+            }
+            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.", null);
+
         }
 
         public Task<IResult> HardDelete(int categoryId)
