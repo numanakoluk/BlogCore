@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Data.Abstract
 {
-    public interface ICategoryRepository:IEntityRepository<Article>
+    public interface ICategoryRepository:IEntityRepository<Category>
     {
     }
 }

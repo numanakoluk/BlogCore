@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Data.Concrete.EntityFramework.Mappings
 {
-    public class CategoryMap : IEntityTypeConfiguration<Article>
+    public class CategoryMap : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Article> builder)
+        public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id).ValueGeneratedOnAdd();
@@ -29,53 +29,48 @@ namespace Data.Concrete.EntityFramework.Mappings
             builder.Property(c => c.Note).HasMaxLength(500);
             builder.ToTable("Categories");
 
-            builder.HasData
-                (new Article
-            {
-                Id=1,
-                Name="C#",
-                Description="C# ile ilgili en güncel bilgiler",
-                IsActive = true,
-                IsDeleted = false,
-                CreatedByName = "InitialCreate",
-                CreatedDate = DateTime.Now,
-                ModifiedByName = "InitialCreate",
-                ModifiedDate = DateTime.Now,
-                Note = "C # Blog Kategorisi",
+            builder.HasData(
+                new Category
+                {
+                    Id = 1,
+                    Name = "C#",
+                    Description = "C# Programlama Dili ile İlgili En Güncel Bilgiler",
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    Note = "C# Blog Kategorisi",
+                },
+                new Category
+                {
+                    Id = 2,
+                    Name = "C++",
+                    Description = "C++ Programlama Dili ile İlgili En Güncel Bilgiler",
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    Note = "C++ Blog Kategorisi",
+                },
 
-            },
-               new Article
-               {
-                   Id = 2,
-                   Name = "C++",
-                   Description = "C++ ile ilgili en güncel bilgiler",
-                   IsActive = true,
-                   IsDeleted = false,
-                   CreatedByName = "InitialCreate",
-                   CreatedDate = DateTime.Now,
-                   ModifiedByName = "InitialCreate",
-                   ModifiedDate = DateTime.Now,
-                   Note = "C ++ Blog Kategorisi",
-
-               },
-               new Article
-               {
-                   Id = 3,
-                   Name = "JavaScript",
-                   Description = "JavaScript ile ilgili en güncel bilgiler",
-                   IsActive = true,
-                   IsDeleted = false,
-                   CreatedByName = "InitialCreate",
-                   CreatedDate = DateTime.Now,
-                   ModifiedByName = "InitialCreate",
-                   ModifiedDate = DateTime.Now,
-                   Note = "JavaScript Blog Kategorisi",
-
-               }
-
+                new Category
+                {
+                    Id = 3,
+                    Name = "JavaScript",
+                    Description = "JavaScript Programlama Dili ile İlgili En Güncel Bilgiler",
+                    IsActive = true,
+                    IsDeleted = false,
+                    CreatedByName = "InitialCreate",
+                    CreatedDate = DateTime.Now,
+                    ModifiedByName = "InitialCreate",
+                    ModifiedDate = DateTime.Now,
+                    Note = "JavaScript Blog Kategorisi",
+                }
             );
-
-
         }
     }
 }

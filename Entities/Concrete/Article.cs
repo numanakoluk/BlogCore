@@ -13,15 +13,15 @@ namespace Entities.Concrete
         public string Content { get; set; }
         public string Thumbnail { get; set; }
         public DateTime Date { get; set; }
-        public int ViewCount { get; set; }
-        public int CommentCount { get; set; }
+        public int ViewCount { get; set; } = 0;
+        public int CommentCount { get; set; } = 0;
         public string SeoAuthor { get; set; } //AramaMotoru için.MetaTag.Paylaşan.
 
         public string SeoDescription { get; set; }
         public string SeoTags { get; set; } //text header
 
         public int CategoryId { get; set; }
-        public Article Category { get; set; }
+        public Category Category { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
 

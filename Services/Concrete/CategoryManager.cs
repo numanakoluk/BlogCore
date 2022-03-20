@@ -25,8 +25,7 @@ namespace Services.Concrete
 
         public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
-            //İleride AutoMapper library ile.
-            await _unitOfWork.Categories.AddAsync(new Article
+            await _unitOfWork.Categories.AddAsync(new Category
             {
                 Name = categoryAddDto.Name,
                 Description = categoryAddDto.Description,
@@ -40,10 +39,9 @@ namespace Services.Concrete
             }).ContinueWith(t => _unitOfWork.SaveAsync());
             //await _unitOfWork.SaveAsync();
             return new Result(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir.");
-
         }
 
-       
+
 
         public async Task<IResult> Delete(int categoyId, string modifiedByName)
         {
@@ -71,40 +69,35 @@ namespace Services.Concrete
         }
 
 
-        public async Task<IDataResult<Article>> Get(int categoryId)
+        public async Task<IDataResult<Category>> Get(int categoryId)
         {
             //ınclude articles
-            var category= await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId,c=>c.Articles);
-
-            if (category!=null)
+            var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId, c => c.Articles);
+            if (category != null)
             {
-                return  new  DataResult<Article>(ResultStatus.Success,category);
+                return new DataResult<Category>(ResultStatus.Success, category);
             }
-            return new DataResult<Article>(ResultStatus.Error,"Böyle Bir Kategori Bulunamadı.",null);
+            return new DataResult<Category>(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
         }
 
-        public async Task<IDataResult<IList<Article>>> GetAll()
+        public async Task<IDataResult<IList<Category>>> GetAll()
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(null, c => c.Articles);
-
-            //0 tane kategori de isteyebiliriz.
-            if (categories.Count>-1)
+            if (categories.Count > -1)
             {
-                return new DataResult<IList<Article>>(ResultStatus.Success, categories);
+                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
             }
-            return new DataResult<IList<Article>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.",null);
+            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", null);
         }
 
-        public async Task<IDataResult<IList<Article>>> GetAllByNonDeleted()
+        public async Task<IDataResult<IList<Category>>> GetAllByNonDeleted()
         {
             var categories = await _unitOfWork.Categories.GetAllAsync(c => !c.IsDeleted, c => c.Articles);
-
-            if (categories.Count>-1)
+            if (categories.Count > -1)
             {
-                return new DataResult<IList<Article>>(ResultStatus.Success, categories);
-
+                return new DataResult<IList<Category>>(ResultStatus.Success, categories);
             }
-            return new DataResult<IList<Article>>(ResultStatus.Error, "Hiç Bir Kategori Bulunamadı.", null);
+            return new DataResult<IList<Category>>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", null);
 
         }
 
