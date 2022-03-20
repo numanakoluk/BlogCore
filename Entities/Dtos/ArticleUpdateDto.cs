@@ -49,9 +49,13 @@ namespace Entities.Dtos
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
         [DisplayName("Aktif Mi?")]
         [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         public bool IsActive { get; set; }
+
+        [DisplayName("Silinsin Mi?")]
+        [Required(ErrorMessage = "{0} alanı boş geçilmemelidir.")]
         public bool IsDeleted { get; set; }
     }
 }
