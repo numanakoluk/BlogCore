@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities.Concrete;
+using Shared.Entites.Abstract;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class ArticleListDto
+    public class ArticleListDto:DtoGetBase
     {
+        public IList<Article> Articles { get; set; }
+
     }
 }
