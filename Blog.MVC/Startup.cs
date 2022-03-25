@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services.AutoMapper.Profiles;
 using Services.Extentions;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Blog.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews().AddRazorRuntimeCompilation(); //programa ne yapmak istediðimi söyledim: Her deðiþiklik sonrasý programý derlemek zorunda kalýnmayacak.
-            services.AddAutoMapper(typeof(Startup)); //DERLENME Esnasýnda automapper sýnýflarý taramasýný saðlýyor.Profile'den türeyen sýnýflarý tarýyor.
+            services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile)); //DERLENME Esnasýnda automapper sýnýflarý taramasýný saðlýyor.Profile'den türeyen sýnýflarý tarýyor.
             services.LoadMyServices();         //Dependiec injection için
 
         }
