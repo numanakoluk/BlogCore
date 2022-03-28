@@ -16,9 +16,9 @@ namespace Shared.Data.Abstract
         //Birden çok bir listeye ihtiyacımız olursa.Predicate null ise tüm article gelsin gelmzse filtreye göre yüklüyor olucaz.
         Task<IList<T>> GetAllAsync(Expression<Func<T,bool>> predicate=null, params Expression<Func<T,object>> [] includeProperties);
 
-        Task AddAsync(T entity);
+        Task<T> AddAsync(T entity);
 
-        Task UpdateAsync(T entiy);
+        Task<T> UpdateAsync(T entiy);
 
         Task DeleteAsync(T entity);
 
