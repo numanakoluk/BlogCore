@@ -37,7 +37,7 @@ namespace Data.Concrete
             return await _context.SaveChangesAsync();
         }
 
-        //Context dispose edilirken diğer işlemler beklemek zorunda kalmayacak.İşlemler hızlanacak.Gabage collector er ya da geç silecek.
+        //Context dispose edilirken diğer işlemler beklemek zorunda kalmayacak.İşlemler hızlanacak.Garbage collector er ya da geç silecek.
         public async ValueTask DisposeAsync()
         {
             await _context.DisposeAsync();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blog.MVC.Controllers
 {
+
     public class HomeController : Controller
     {
         public IActionResult Index()

@@ -36,12 +36,7 @@ namespace Services.Concrete
                     ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryDto>(ResultStatus.Error, "Böyle bir kategori bulunamadı.", new CategoryDto
-            {
-                Category = null,
-                ResultStatus = ResultStatus.Error,
-                Message = "Böyle bir kategori bulunamadı."
-            });
+            return new DataResult<CategoryDto>(ResultStatus.Error, "Böyle bir kategori bulunamadı.", null);
         }
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
@@ -52,16 +47,10 @@ namespace Services.Concrete
                 return new DataResult<CategoryListDto>(ResultStatus.Success, new CategoryListDto
                 {
                     Categories = categories,
-                    ResultStatus = ResultStatus.Error,
-                    Message = "Hiç bir kategori bulunamadı."
+                    ResultStatus = ResultStatus.Success
                 });
             }
-            return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", new CategoryListDto
-            {
-                Categories = null,
-                ResultStatus = ResultStatus.Error,
-                Message = "Hiç bir kategori bulunamadı."
-            });
+            return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", null);
         }
 
         public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleted()
@@ -92,33 +81,23 @@ namespace Services.Concrete
             return new DataResult<CategoryListDto>(ResultStatus.Error, "Hiç bir kategori bulunamadı.", null);
         }
 
-        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
+        public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
             var category = _mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
             category.ModifiedByName = createdByName;
-            var addedCategory = await _unitOfWork.Categories.AddAsync(category);
-            await _unitOfWork.SaveAsync();
-            return new DataResult<CategoryDto>(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir.", new CategoryDto
-            {
-                Category = addedCategory,
-                ResultStatus = ResultStatus.Success,
-                Message = $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir."
-            });
+            await _unitOfWork.Categories.AddAsync(category)
+                .ContinueWith(t => _unitOfWork.SaveAsync());
+            //await _unitOfWork.SaveAsync();
+            return new Result(ResultStatus.Success, $"{categoryAddDto.Name} adlı kategori başarıyla eklenmiştir.");
         }
 
-        public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
+        public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
         {
             var category = _mapper.Map<Category>(categoryUpdateDto);
             category.ModifiedByName = modifiedByName;
-            var updatedCategory = await _unitOfWork.Categories.UpdateAsync(category);
-            await _unitOfWork.SaveAsync();
-            return new DataResult<CategoryDto>(ResultStatus.Success, $"{categoryUpdateDto.Name} adlı kategori başarıyla güncellenmiştir.", new CategoryDto
-            {
-                Category = updatedCategory,
-                ResultStatus = ResultStatus.Success,
-                Message = $"{categoryUpdateDto.Name} adlı kategori başarıyla güncellenmiştir."
-            });
+            await _unitOfWork.Categories.UpdateAsync(category).ContinueWith(t => _unitOfWork.SaveAsync());
+            return new Result(ResultStatus.Success, $"{categoryUpdateDto.Name} adlı kategori başarıyla güncellenmiştir.");
         }
 
         public async Task<IResult> Delete(int categoryId, string modifiedByName)
@@ -147,6 +126,8 @@ namespace Services.Concrete
             }
             return new Result(ResultStatus.Error, "Böyle bir kategori bulunamadı.");
         }
+
+
     }
 
 }

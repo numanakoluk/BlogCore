@@ -15,7 +15,6 @@ namespace Shared.Utility.Results.Concrete
             ResultStatus = resultStatus;
         }
 
-        //One more than ctor
         public Result(ResultStatus resultStatus, string message)
         {
             ResultStatus = resultStatus;
